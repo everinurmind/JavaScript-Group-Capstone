@@ -66,10 +66,10 @@ function createPokemon(pokemon) {
 async function fetchPokemons(number) {
   const pokemonData = [];
   for (let i = 1; i <= number; i += 1) {
-    pokemonData.push(fetch(`https://pokeapi.co/api/v2/pokemon/${i}`).then(res => res.json()));
+    pokemonData.push(fetch(`https://pokeapi.co/api/v2/pokemon/${i}`).then((res) => res.json()));
   }
   const pokemonArray = await Promise.all(pokemonData);
-  pokemonArray.forEach(pokemon => createPokemon(pokemon));
+  pokemonArray.forEach((pokemon) => createPokemon(pokemon));
 }
 
 fetchPokemons(15);
