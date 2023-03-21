@@ -1,6 +1,7 @@
 // Import
 import './style.css';
 import logo from './img/pokeball.png';
+import cardpopup from './modules/reservationspopup';
 
 const img = document.createElement('img');
 img.src = logo;
@@ -52,6 +53,8 @@ const createPokemon = (pokemon) => {
   const reservationsBtn = document.createElement('button');
   reservationsBtn.textContent = 'Reservations';
   reservationsBtn.classList.add('reservations-btn');
+  reservationsBtn.setAttribute('id', `${pokemon.id.toString().padStart(1, 0)}`);
+  reservationsBtn.setAttribute('onclick', 'cardpopup(id)');
 
   card.appendChild(spriteContainer);
   card.appendChild(name);
