@@ -5,25 +5,25 @@ import logo from './img/pokeball.png';
 const img = document.createElement('img');
 img.src = logo;
 
-// Hamburger/Overlay
-const hamburger = document.querySelector('.hamburger');
-const overlay = document.querySelector('.overlay');
-const closeButton = document.querySelector('.close-button');
-
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('change');
-  overlay.classList.toggle('show');
+// Scroll Button
+window.addEventListener('scroll', () => {
+  const scrollBtn = document.getElementById('scroll-to-top-btn');
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    scrollBtn.style.display = 'block';
+  } else {
+    scrollBtn.style.display = 'none';
+  }
 });
 
-closeButton.addEventListener('click', () => {
-  hamburger.classList.remove('change');
-  overlay.classList.remove('show');
+document.getElementById('scroll-to-top-btn').addEventListener('click', () => {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 });
 
 // Fetch API
 const pokemonContainer = document.getElementById('item-container');
 
-function createPokemon(pokemon) {
+const createPokemon = (pokemon) => {
   const card = document.createElement('div');
   card.classList.add('pokemon-block');
 
@@ -61,15 +61,13 @@ function createPokemon(pokemon) {
   // card.appendChild(number);
 
   pokemonContainer.appendChild(card);
-}
+};
 
-async function fetchPokemons(number) {
-  const pokemonData = [];
-  for (let i = 1; i <= number; i += 1) {
-    pokemonData.push(fetch(`https://pokeapi.co/api/v2/pokemon/${i}`).then((res) => res.json()));
-  }
-  const pokemonArray = await Promise.all(pokemonData);
-  pokemonArray.forEach((pokemon) => createPokemon(pokemon));
-}
+const fetchPokemons = async (number) => {
+  const urls = Array.from({ length: number }, (_, i) => `https://pokeapi.co/api/v2/pokemon/${i + 1}`);
+  const responses = await Promise.all(urls.map((url) => fetch(url)));
+  const pokemonData = await Promise.all(responses.map((res) => res.json()));
+  pokemonData.forEach((pokemon) => createPokemon(pokemon));
+};
 
-fetchPokemons(15);
+fetchPokemons(45);

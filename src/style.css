@@ -22,85 +22,44 @@ body {
   width: 40px;
 }
 
-.hamburger {
+#main-nav {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 20px;
-  width: 30px;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  padding: 0;
-  margin: 0;
+  flex-direction: row;
+  gap: 20px;
+  list-style-type: none;
 }
 
-.bar {
-  height: 4px;
-  width: 25px;
-  background-color: #003a70;
-  transition: transform 0.3s ease-in-out;
+.navigation {
+  text-decoration: none;
+  color: #003a70;
 }
 
-.change .bar:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+.navigation:hover {
+  text-decoration: underline;
+  color: #3d7dca;
 }
 
-.change .bar:nth-child(2) {
-  opacity: 0;
-}
-
-.change .bar:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
-/* Overlay Window */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #3d7dca;
-  z-index: 999;
+/* Scroll Button */
+#scroll-to-top-btn {
   display: none;
-}
-
-.show {
-  display: block;
-}
-
-.close-button {
-  position: absolute;
-  top: 2px;
-  right: 17px;
-  font-size: 48px;
-  background-color: transparent;
-  border: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  font-size: 16px;
+  outline: none;
+  background-color: #ffcb05;
   color: #003a70;
   cursor: pointer;
+  padding: 8px;
+  border: 5px solid #003a70;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
 }
 
-#overlay-nav {
-  margin-top: 75px;
-}
-
-#overlay-nav li {
-  display: block;
-  margin-top: 55px;
-  margin-bottom: 10px;
-  text-align: left;
-}
-
-#overlay-nav li a {
-  color: #ffcb05;
-  font-size: 24px;
-  text-transform: uppercase;
-  text-decoration: none;
-}
-
-#overlay-nav li a:hover {
-  color: #ffcd0596;
+#scroll-to-top-btn:hover {
+  background-color: #3d7dca;
 }
 
 /* Pokemon Cards Section */
@@ -134,6 +93,7 @@ body {
   text-align: center;
   text-transform: uppercase;
   font-weight: 900;
+  color: #003a70;
 }
 
 .number {
