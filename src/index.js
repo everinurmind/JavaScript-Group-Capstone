@@ -42,6 +42,9 @@ function createPokemon(pokemon) {
   name.classList.add('name');
   name.textContent = pokemon.name;
 
+  const likeBtn = document.createElement('i');
+  likeBtn.classList.add('fas', 'fa-heart', 'like-btn');
+
   const commentsBtn = document.createElement('button');
   commentsBtn.textContent = 'Comments';
   commentsBtn.classList.add('comments-btn');
@@ -54,7 +57,8 @@ function createPokemon(pokemon) {
   card.appendChild(name);
   card.appendChild(commentsBtn);
   card.appendChild(reservationsBtn);
-  card.appendChild(number);
+  card.appendChild(likeBtn);
+  // card.appendChild(number);
 
   pokemonContainer.appendChild(card);
 }

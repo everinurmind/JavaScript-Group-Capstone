@@ -141,6 +141,21 @@ body {
   text-align: center;
 }
 
+.like-btn {
+  font-weight: 900;
+  color: #3d7dca;
+  margin: 15px;
+  cursor: pointer;
+}
+
+.like-btn:hover {
+  color: #003a70;
+}
+
+.like-btn:active {
+  color: rgb(254, 55, 55);
+}
+
 .comments-btn,
 .reservations-btn {
   font-weight: 900;
@@ -150,8 +165,7 @@ body {
   color: #003a70;
   border: none;
   border-radius: 8px;
-  padding: 8px 16px;
-  margin-right: 8px;
+  padding: 8px;
   cursor: pointer;
 }
 
@@ -171,6 +185,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 900;
   background-color: #ffcb05;
   color: #003a70;
   padding: 20px;
