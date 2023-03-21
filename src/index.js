@@ -1,14 +1,19 @@
-import _ from 'lodash';
 import './style.css';
+import logo from './img/pokeball.png';
 
-function component() {
-  const element = document.createElement('div');
+const img = document.createElement('img');
+img.src = logo;
 
-  // Lodash, now imported by this script
+const hamburger = document.querySelector('.hamburger');
+const overlay = document.querySelector('.overlay');
+const closeButton = document.querySelector('.close-button');
 
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('change');
+  overlay.classList.toggle('show');
+});
 
-  return element;
-}
-
-document.body.appendChild(component());
+closeButton.addEventListener('click', () => {
+  hamburger.classList.remove('change');
+  overlay.classList.remove('show');
+});
