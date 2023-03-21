@@ -63,18 +63,13 @@ function createPokemon(pokemon) {
   pokemonContainer.appendChild(card);
 }
 
-function fetchPokemon(id) {
-  fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
-    .then((res) => res.json())
-    .then((data) => {
-      createPokemon(data);
-    });
-}
-
-function fetchPokemons(number) {
+async function fetchPokemons(number) {
+  const pokemonData = [];
   for (let i = 1; i <= number; i += 1) {
-    fetchPokemon(i);
+    pokemonData.push(fetch(`https://pokeapi.co/api/v2/pokemon/${i}`).then(res => res.json()));
   }
+  const pokemonArray = await Promise.all(pokemonData);
+  pokemonArray.forEach(pokemon => createPokemon(pokemon));
 }
 
-fetchPokemons(9);
+fetchPokemons(15);
