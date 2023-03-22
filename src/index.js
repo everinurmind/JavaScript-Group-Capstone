@@ -24,6 +24,27 @@ document.getElementById('scroll-to-top-btn').addEventListener('click', () => {
 // Fetch API
 const pokemonContainer = document.getElementById('item-container');
 
+const fetchLikes = async (id) => {
+  try {
+    const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Fk5Ln5W8Rv0aA5RhKjoi/likes/${id}`);
+    const data = await response.json();
+    return data.likes || 0;
+  } catch (error) {
+    console.error(error);
+    return 0;
+  }
+};
+
+const postLike = async (id) => {
+  try {
+    await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Fk5Ln5W8Rv0aA5RhKjoi/likes/${id}`, {
+      method: 'POST',
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const createPokemon = async (pokemon) => {
   const card = document.createElement('div');
   card.classList.add('pokemon-block');
@@ -43,9 +64,6 @@ const createPokemon = async (pokemon) => {
   name.classList.add('name');
   name.textContent = pokemon.name;
 
-  const likeBtn = document.createElement('i');
-  likeBtn.classList.add('fas', 'fa-heart', 'like-btn');
-
   const commentsBtn = document.createElement('button');
   commentsBtn.textContent = 'Comments';
   commentsBtn.classList.add('comments-btn');
@@ -56,10 +74,10 @@ const createPokemon = async (pokemon) => {
   reservationsBtn.setAttribute('id', `${pokemon.id.toString().padStart(1, 0)}`);
   reservationsBtn.setAttribute('onclick', 'cardpopup(id)');
 
-  const likes = await fetch(`https://involvement-api.herokuapp.com/api/v1/item/${pokemon.id}/likes`)
-    .then((res) => res.json())
-    .then((data) => data.likes)
-    .catch(() => 0);
+  const likes = await fetchLikes(pokemon.id);
+
+  const likeBtn = document.createElement('i');
+  likeBtn.classList.add('fas', 'fa-heart', 'like-btn');
 
   const likeCount = document.createElement('span');
   likeCount.classList.add('like-num');
@@ -71,9 +89,7 @@ const createPokemon = async (pokemon) => {
     likeCount.textContent = parseInt(likeCount.textContent, 10) + 1;
 
     // Involvement API
-    await fetch(`https://involvement-api.herokuapp.com/api/v1/item/${pokemon.id}/likes`, {
-      method: 'POST',
-    });
+    await postLike(pokemon.id);
   });
 
   card.appendChild(spriteContainer);
