@@ -1,153 +1,358 @@
 /* Main Styles */
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-weight: 900;
-  background-color: #3d7dca;
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 900;
+    background-color: #3d7dca;
 }
 
+
 /* Header Section */
+
 .navbar {
-  background-color: #ffcb05;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  position: relative;
+    background-color: #ffcb05;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
 }
 
 .logo {
-  height: 40px;
-  width: 40px;
+    height: 40px;
+    width: 40px;
 }
 
 #main-nav {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    list-style-type: none;
 }
 
 .navigation {
-  text-decoration: none;
-  color: #003a70;
+    text-decoration: none;
+    color: #003a70;
 }
 
 .navigation:hover {
-  text-decoration: underline;
-  color: #3d7dca;
+    text-decoration: underline;
+    color: #3d7dca;
 }
 
+
 /* Scroll Button */
+
 #scroll-to-top-btn {
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 99;
-  font-size: 16px;
-  outline: none;
-  background-color: #ffcb05;
-  color: #003a70;
-  cursor: pointer;
-  padding: 8px;
-  border: 5px solid #003a70;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    font-size: 16px;
+    outline: none;
+    background-color: #ffcb05;
+    color: #003a70;
+    cursor: pointer;
+    padding: 8px;
+    border: 5px solid #003a70;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
 }
 
 #scroll-to-top-btn:hover {
-  background-color: #3d7dca;
+    background-color: #3d7dca;
 }
 
+
 /* Pokemon Cards Section */
+
 #item-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 50px;
 }
 
 .pokemon-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: calc(33.33% - 20px);
-  margin: 10px;
-  background-color: #ffcb05;
-  border: 5px solid #003a70;
-  border-radius: 8px;
-  box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(33.33% - 20px);
+    margin: 10px;
+    background-color: #ffcb05;
+    border: 5px solid #003a70;
+    border-radius: 8px;
+    box-sizing: border-box;
 }
 
 .img-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75px;
 }
 
 .name {
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 900;
-  color: #003a70;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: #003a70;
 }
 
 .number {
-  font-weight: bold;
-  text-align: center;
+    font-weight: bold;
+    text-align: center;
 }
 
 .like-btn {
-  font-weight: 900;
-  color: #3d7dca;
-  margin: 15px;
-  cursor: pointer;
+    font-weight: 900;
+    color: #3d7dca;
+    margin: 15px;
+    cursor: pointer;
 }
 
 .like-btn:hover {
-  color: #003a70;
+    color: #003a70;
 }
 
 .like-btn:active {
-  color: rgb(254, 55, 55);
+    color: rgb(254, 55, 55);
 }
 
 .comments-btn,
 .reservations-btn {
-  font-weight: 900;
-  margin-bottom: 10px;
-  width: calc(75% + 25px);
-  background-color: #3d7dca;
-  color: #003a70;
-  border: none;
-  border-radius: 8px;
-  padding: 8px;
-  cursor: pointer;
+    font-weight: 900;
+    margin-bottom: 10px;
+    width: calc(75% + 25px);
+    background-color: #3d7dca;
+    color: #003a70;
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
 }
 
 .comments-btn:hover,
 .reservations-btn:hover {
-  background-color: #3d7dca;
-  color: #ffcb05;
+    background-color: #3d7dca;
+    color: #ffcb05;
 }
 
 .comments-btn:active,
 .reservations-btn:active {
-  background-color: #003a70;
+    background-color: #003a70;
 }
 
+
+/* Comment Modal */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 10px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.787);
+}
+
+
+/* Modal Content */
+
+.modal-content {
+    background-color: #1f69c3f1;
+    margin: auto;
+    padding: 20px;
+    width: 90%;
+    border: 2px solid #003a70;
+}
+
+
+/* The Close Button */
+
+.close {
+    color: #ffcb05;
+    float: right;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* Comment Container */
+
+.comments-details-box {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ffcb05;
+}
+
+.t-headline {
+    color: #ffcb05;
+    font-weight: 700;
+}
+
+.t-span {
+    color: #0a0a0a;
+}
+
+
+/* comment image container */
+
+.comment_ImgBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2.5rem;
+    height: 150px;
+}
+
+.comment_img {
+    width: 250px;
+    height: 250px;
+}
+
+.pokemon_name {
+    text-align: center;
+    padding: 10px;
+    color: #ffcb05;
+    font-weight: 900;
+    font-size: larger;
+}
+
+.line {
+    width: 50%;
+}
+
+
+/* Comment Info Container */
+
+.infoContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 9rem;
+}
+
+.info {
+    color: #fff;
+    font-weight: 900;
+}
+
+.commentTitle {
+    color: #fff;
+}
+
+.badge {
+    background-color: #ffcb05;
+    border-radius: 50%;
+    padding: 5px 8px 5px 8px;
+    color: #003a70;
+    font-weight: 600;
+}
+
+
+/* Comment Section and Area */
+
+.commentBox {
+    width: 50vw;
+    margin: 1rem;
+    background-color: #ffcb05;
+    height: 20vh;
+    overflow: auto;
+    border: 2px solid #fff;
+    border-radius: 20px;
+}
+
+.comment-area {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.comment {
+    height: 10%;
+    padding: 2%;
+    margin: 2%;
+    background-color: #3d7dca;
+    color: #fff;
+    font-weight: 500;
+    border: 2px solid #fff;
+    border-radius: 20px;
+}
+
+
+/* Comment Posting */
+
+.commentMessage {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.commentMessage form {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.commentMessage form input[type="text"] {
+    padding: 1rem;
+    width: 45vw;
+    height: auto;
+    font-weight: 600;
+    border-radius: 20px;
+    border: none;
+}
+
+.commentMessage form textarea {
+    padding: 4rem 2rem;
+    font-weight: 600;
+    border-radius: 20px;
+}
+
+.commentMessage form .submitComment {
+    padding: 1rem;
+    margin: .1rem 8rem;
+    background-color: #ffcb05;
+    border-radius: 50px;
+    border: none;
+}
+
+.commentMessage form .submitComment:hover {
+    box-shadow: 4px 3px;
+    font-weight: 900;
+}
+
+
 /* Footer Section */
+
 footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-  background-color: #ffcb05;
-  color: #003a70;
-  padding: 20px;
-  margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    background-color: #ffcb05;
+    color: #003a70;
+    padding: 20px;
+    margin-top: 50px;
 }
