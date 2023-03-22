@@ -66,8 +66,8 @@ const cardpopup = (pokemon) => {
       const inputname = document.createElement('input');
       inputname.setAttribute('type','text');
       inputname.setAttribute('id','name');
-      inputname.setAttribute('placeholder','Your name');
       inputname.setAttribute('required', 'required');
+      inputname.setAttribute('placeholder','Your name');
       namereservation.append(inputname);
 
       const datereservationstart = document.createElement('li');
@@ -94,7 +94,9 @@ const cardpopup = (pokemon) => {
       reservebutton.innerHTML = `Reserve`;
 
       reservebutton.addEventListener('click', () => {
-        displayreservation(inputname, inputdatestart, inputdateend, pokemon.id);
+        if ((inputname.value && inputdatestart.value && inputdateend.value) !== '') {
+        displayreservation(inputname, inputdatestart, inputdateend, pokemon.id)
+        };
       })
 
       inputreservation.append(namereservation, datereservationstart, datereservationend, reservebutton);
