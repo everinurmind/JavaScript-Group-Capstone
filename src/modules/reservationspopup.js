@@ -12,15 +12,21 @@ window.cardpopup = (id) => {
       const maincontainer = document.createElement('div');
       maincontainer.classList.add('maincontainer')
       
-      const closeandimage = document.createElement('div')
-      closeandimage.classList.add('closeandimage');
-      const closeButton = document.createElement('img');
-      closeButton.src = closing;
+      const closecontainer = document.createElement('div');
+      closecontainer.classList.add('closecontainer');
+      const closeButton = document.createElement('span');
+      closeButton.innerHTML = `&times;`
       closeButton.classList.add('closingbutton');
+      const titlebutton = document.createElement('p');
+      titlebutton.innerHTML = `<h2 class="t-headline">Reservations <span class="t-span">  Window</span></h2>`;
+      closecontainer.append(titlebutton, closeButton)
+
+      const closeandimage = document.createElement('div');
+      closeandimage.classList.add('closeandimage');
       const pokemonimage = document.createElement('img');
       pokemonimage.src = pokemon.sprites.front_default;
       pokemonimage.classList.add('pokemonimage');
-      closeandimage.append(pokemonimage, closeButton);
+      closeandimage.append(pokemonimage);
 
       const pokemoname = document.createElement('div');
       pokemoname.classList.add('pokemoname');
@@ -75,10 +81,24 @@ window.cardpopup = (id) => {
       inputdatestart.attributes.required = '';
       datereservationstart.append(inputdatestart);
 
-      inputreservation.appendChild(namereservation, datereservationstart);
+      const datereservationend = document.createElement('li');
+      datereservationend.classList.add('datereservationend');
+      const inputdateend = document.createElement('input');
+      inputdateend.setAttribute('type','date');
+      inputdateend.setAttribute('id','enddate');
+      inputdateend.setAttribute('placeholder','End date');
+      inputdateend.attributes.required = '';
+      datereservationend.append(inputdateend);
+
+      const reservebutton = document.createElement('button');
+      reservebutton.setAttribute('type','submit');
+      reservebutton.setAttribute('id','reservebutton');
+      reservebutton.innerHTML = `Reserve`;
+
+      inputreservation.append(namereservation, datereservationstart, datereservationend, reservebutton);
       addareservation.append(addareservationtitle, inputreservation);
 
-      maincontainer.append(closeandimage, pokemoname, characteristics, reservations, addareservation);
+      maincontainer.append(closecontainer , closeandimage, pokemoname, characteristics, reservations, addareservation);
       popup.append(maincontainer);
       document.querySelector('body').appendChild(popup);
 
