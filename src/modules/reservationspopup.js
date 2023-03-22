@@ -5,7 +5,6 @@ window.cardpopup = (id) => {
     const urls = Array.from({ length: number }, (_, i) => `https://pokeapi.co/api/v2/pokemon/${i + 1}`);
     const responses = await Promise.all(urls.map((url) => fetch(url)));
     const pokemonData = await Promise.all(responses.map((res) => res.json()));
-    console.log(pokemonData);
     pokemonData.forEach((pokemon) => {
       if ( id == pokemon.id) {
       const popup = document.createElement('div');
@@ -47,9 +46,39 @@ window.cardpopup = (id) => {
       reservations.classList.add('reservations');
       const reservationstitle = document.createElement('h3');
       reservationstitle.textContent = 'Reservations';
+      reservationstitle.classList.add('reservationstitle');
       reservations.append(reservationstitle);
 
-      maincontainer.append(closeandimage, pokemoname, characteristics, reservations);
+      const addareservation = document.createElement('div');
+      addareservation.classList.add('addareservation');
+      const addareservationtitle = document.createElement('h3');
+      addareservationtitle.classList.add('addareservationtitle');
+      addareservationtitle.textContent = 'Add a reservation';
+      const inputreservation = document.createElement('ul');
+      inputreservation.classList.add('inputreservation');
+      
+      const namereservation = document.createElement('li');
+      namereservation.classList.add('namereservation');
+      const inputname = document.createElement('input');
+      inputname.setAttribute('type','text');
+      inputname.setAttribute('id','name');
+      inputname.setAttribute('placeholder','Your name');
+      inputname.attributes.required = '';
+      namereservation.append(inputname);
+
+      const datereservationstart = document.createElement('li');
+      datereservationstart.classList.add('datereservationstart');
+      const inputdatestart = document.createElement('input');
+      inputdatestart.setAttribute('type','date');
+      inputdatestart.setAttribute('id','startdate');
+      inputdatestart.setAttribute('placeholder','Start date');
+      inputdatestart.attributes.required = '';
+      datereservationstart.append(inputdatestart);
+
+      inputreservation.appendChild(namereservation, datereservationstart);
+      addareservation.append(addareservationtitle, inputreservation);
+
+      maincontainer.append(closeandimage, pokemoname, characteristics, reservations, addareservation);
       popup.append(maincontainer);
       document.querySelector('body').appendChild(popup);
 
@@ -58,5 +87,5 @@ window.cardpopup = (id) => {
       })
   }})
   }
-      fetchPokemons(9)      
+      fetchPokemons(45)      
 }

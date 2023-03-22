@@ -183,18 +183,18 @@ footer {
   display: flex;
   flex-direction: row;
   padding-top: 2rem;
-  width: 50%;
+  width: 100%;
   height: 30%;
   justify-content: space-around;
 }
 
 .closingbutton {
   height: 20%;
-  width: 8%;
+  width: 3%;
 }
 
 .pokemonimage {
-  width: 80%;
+  width: 15%;
   height: 80%;
 }
 
@@ -205,3 +205,13 @@ footer {
   color: #003a70;
 }
 
+.addareservation {
+  border: 2px solid green;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.addareservationtitle {
+  text-align: center;
+}
