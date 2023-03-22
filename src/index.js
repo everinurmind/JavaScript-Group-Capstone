@@ -24,7 +24,7 @@ document.getElementById('scroll-to-top-btn').addEventListener('click', () => {
 // Fetch API
 const pokemonContainer = document.getElementById('item-container');
 
-const createPokemon = (pokemon) => {
+const createPokemon = async (pokemon) => {
   const card = document.createElement('div');
   card.classList.add('pokemon-block');
 
@@ -56,6 +56,26 @@ const createPokemon = (pokemon) => {
   reservationsBtn.setAttribute('id', `${pokemon.id.toString().padStart(1, 0)}`);
   reservationsBtn.setAttribute('onclick', 'cardpopup(id)');
 
+  const likes = await fetch(`https://involvement-api.herokuapp.com/api/v1/item/${pokemon.id}/likes`)
+    .then((res) => res.json())
+    .then((data) => data.likes)
+    .catch(() => 0);
+
+  const likeCount = document.createElement('span');
+  likeCount.classList.add('like-num');
+  likeCount.textContent = likes;
+  likeBtn.appendChild(likeCount);
+
+  likeBtn.addEventListener('click', async () => {
+    // Like count
+    likeCount.textContent = parseInt(likeCount.textContent, 10) + 1;
+
+    // Involvement API
+    await fetch(`https://involvement-api.herokuapp.com/api/v1/item/${pokemon.id}/likes`, {
+      method: 'POST',
+    });
+  });
+
   card.appendChild(spriteContainer);
   card.appendChild(name);
   card.appendChild(commentsBtn);
@@ -70,7 +90,7 @@ const fetchPokemons = async (number) => {
   const urls = Array.from({ length: number }, (_, i) => `https://pokeapi.co/api/v2/pokemon/${i + 1}`);
   const responses = await Promise.all(urls.map((url) => fetch(url)));
   const pokemonData = await Promise.all(responses.map((res) => res.json()));
-  pokemonData.forEach((pokemon) => createPokemon(pokemon));
+  await Promise.all(pokemonData.map((pokemon) => createPokemon(pokemon)));
 };
 
 fetchPokemons(45);

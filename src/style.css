@@ -101,6 +101,10 @@ body {
   text-align: center;
 }
 
+.like-num {
+  margin-left: 5px;
+}
+
 .like-btn {
   font-weight: 900;
   color: #3d7dca;
