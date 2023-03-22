@@ -1,4 +1,4 @@
-import displayreservation from './savereservation';
+import addreservation from './savereservation';
 
 const cardpopup = (pokemon) => {
       const popup = document.createElement('modal');
@@ -95,7 +95,7 @@ const cardpopup = (pokemon) => {
 
       reservebutton.addEventListener('click', () => {
         if ((inputname.value && inputdatestart.value && inputdateend.value) !== '') {
-        displayreservation(inputname, inputdatestart, inputdateend, pokemon.id)
+        addreservation(inputname, inputdatestart, inputdateend, pokemon.id)
         };
       })
 
