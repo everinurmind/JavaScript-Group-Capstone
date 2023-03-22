@@ -1,3 +1,3 @@
-window.cardpopup = (id) => {
-  console.log(id);
-};
+// window.cardpopup = (id) => {
+//  console.log(id);
+// };

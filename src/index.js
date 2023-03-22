@@ -1,7 +1,8 @@
 // Import
 import './style.css';
 import logo from './img/pokeball.png';
-import cardpopup from './modules/reservationspopup';
+// import cardpopup from './modules/reservationspopup.js';
+import { fetchLikes, postLike } from './modules/likes.js';
 
 const img = document.createElement('img');
 img.src = logo;
@@ -21,29 +22,8 @@ document.getElementById('scroll-to-top-btn').addEventListener('click', () => {
   document.documentElement.scrollTop = 0;
 });
 
-// Fetch API
+// Pokemon Card
 const pokemonContainer = document.getElementById('item-container');
-
-const fetchLikes = async (id) => {
-  try {
-    const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Fk5Ln5W8Rv0aA5RhKjoi/likes/${id}`);
-    const data = await response.json();
-    return data.likes || 0;
-  } catch (error) {
-    console.error(error);
-    return 0;
-  }
-};
-
-const postLike = async (id) => {
-  try {
-    await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Fk5Ln5W8Rv0aA5RhKjoi/likes/${id}`, {
-      method: 'POST',
-    });
-  } catch (error) {
-    console.error(error);
-  }
-};
 
 const createPokemon = async (pokemon) => {
   const card = document.createElement('div');
@@ -87,7 +67,6 @@ const createPokemon = async (pokemon) => {
   likeBtn.addEventListener('click', async () => {
     // Like count
     likeCount.textContent = parseInt(likeCount.textContent, 10) + 1;
-
     // Involvement API
     await postLike(pokemon.id);
   });
@@ -102,6 +81,7 @@ const createPokemon = async (pokemon) => {
   pokemonContainer.appendChild(card);
 };
 
+// Fetch API
 const fetchPokemons = async (number) => {
   const urls = Array.from({ length: number }, (_, i) => `https://pokeapi.co/api/v2/pokemon/${i + 1}`);
   const responses = await Promise.all(urls.map((url) => fetch(url)));
