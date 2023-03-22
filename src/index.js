@@ -73,4 +73,4 @@ const fetchPokemons = async (number) => {
   pokemonData.forEach((pokemon) => createPokemon(pokemon));
 };
 
-fetchPokemons(45);
+fetchPokemons(9);
