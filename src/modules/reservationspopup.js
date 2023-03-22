@@ -1,12 +1,6 @@
-import closing from '../img/closebutton.png' 
+import displayreservation from './savereservation';
 
-window.cardpopup = (id) => {
-  const fetchPokemons = async (number) => {
-    const urls = Array.from({ length: number }, (_, i) => `https://pokeapi.co/api/v2/pokemon/${i + 1}`);
-    const responses = await Promise.all(urls.map((url) => fetch(url)));
-    const pokemonData = await Promise.all(responses.map((res) => res.json()));
-    pokemonData.forEach((pokemon) => {
-      if ( id == pokemon.id) {
+const cardpopup = (pokemon) => {
       const popup = document.createElement('modal');
       popup.style.display = 'block';
       popup.classList.add('openpopup');
@@ -73,7 +67,7 @@ window.cardpopup = (id) => {
       inputname.setAttribute('type','text');
       inputname.setAttribute('id','name');
       inputname.setAttribute('placeholder','Your name');
-      inputname.setAttribute('required', '');
+      inputname.setAttribute('required', 'required');
       namereservation.append(inputname);
 
       const datereservationstart = document.createElement('li');
@@ -91,13 +85,17 @@ window.cardpopup = (id) => {
       inputdateend.setAttribute('type','date');
       inputdateend.setAttribute('id','enddate');
       inputdateend.setAttribute('placeholder','End date');
-      inputdateend.setAttribute('required', '');
+      inputdateend.setAttribute('required', ' ');
       datereservationend.append(inputdateend);
 
       const reservebutton = document.createElement('button');
       reservebutton.setAttribute('type','submit');
       reservebutton.setAttribute('id','reservebutton');
       reservebutton.innerHTML = `Reserve`;
+
+      reservebutton.addEventListener('click', () => {
+        displayreservation(inputname, inputdatestart, inputdateend, pokemon.id);
+      })
 
       inputreservation.append(namereservation, datereservationstart, datereservationend, reservebutton);
       addareservation.append(addareservationtitle, inputreservation);
@@ -109,7 +107,6 @@ window.cardpopup = (id) => {
       closeButton.addEventListener('click', () => {
         popup.classList.remove('openpopup');
       })
-  }})
   }
-      fetchPokemons(45)      
-}
+
+export default cardpopup
