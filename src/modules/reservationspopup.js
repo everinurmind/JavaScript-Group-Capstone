@@ -7,7 +7,8 @@ window.cardpopup = (id) => {
     const pokemonData = await Promise.all(responses.map((res) => res.json()));
     pokemonData.forEach((pokemon) => {
       if ( id == pokemon.id) {
-      const popup = document.createElement('div');
+      const popup = document.createElement('modal');
+      popup.style.display = 'block';
       popup.classList.add('openpopup');
       const maincontainer = document.createElement('div');
       maincontainer.classList.add('maincontainer')
@@ -53,7 +54,10 @@ window.cardpopup = (id) => {
       const reservationstitle = document.createElement('h3');
       reservationstitle.textContent = 'Reservations';
       reservationstitle.classList.add('reservationstitle');
-      reservations.append(reservationstitle);
+
+      const reservationslist = document.createElement('ul');
+      reservationslist.classList.add('reservationslist');
+      reservations.append(reservationstitle, reservationslist);
 
       const addareservation = document.createElement('div');
       addareservation.classList.add('addareservation');
@@ -69,7 +73,7 @@ window.cardpopup = (id) => {
       inputname.setAttribute('type','text');
       inputname.setAttribute('id','name');
       inputname.setAttribute('placeholder','Your name');
-      inputname.attributes.required = '';
+      inputname.setAttribute('required', '');
       namereservation.append(inputname);
 
       const datereservationstart = document.createElement('li');
@@ -78,7 +82,7 @@ window.cardpopup = (id) => {
       inputdatestart.setAttribute('type','date');
       inputdatestart.setAttribute('id','startdate');
       inputdatestart.setAttribute('placeholder','Start date');
-      inputdatestart.attributes.required = '';
+      inputdatestart.setAttribute('required', '');
       datereservationstart.append(inputdatestart);
 
       const datereservationend = document.createElement('li');
@@ -87,7 +91,7 @@ window.cardpopup = (id) => {
       inputdateend.setAttribute('type','date');
       inputdateend.setAttribute('id','enddate');
       inputdateend.setAttribute('placeholder','End date');
-      inputdateend.attributes.required = '';
+      inputdateend.setAttribute('required', '');
       datereservationend.append(inputdateend);
 
       const reservebutton = document.createElement('button');
