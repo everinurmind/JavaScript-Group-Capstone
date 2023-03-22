@@ -1,6 +1,7 @@
 // Import
 import './style.css';
 import logo from './img/pokeball.png';
+import { handleScroll, handleScrollTop } from './modules/scroll.js';
 // import cardpopup from './modules/reservationspopup.js';
 import { fetchLikes, postLike } from './modules/likes.js';
 
@@ -8,19 +9,8 @@ const img = document.createElement('img');
 img.src = logo;
 
 // Scroll Button
-window.addEventListener('scroll', () => {
-  const scrollBtn = document.getElementById('scroll-to-top-btn');
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    scrollBtn.style.display = 'block';
-  } else {
-    scrollBtn.style.display = 'none';
-  }
-});
-
-document.getElementById('scroll-to-top-btn').addEventListener('click', () => {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-});
+window.addEventListener('scroll', handleScroll);
+document.getElementById('scroll-to-top-btn').addEventListener('click', handleScrollTop);
 
 // Pokemon Card
 const pokemonContainer = document.getElementById('item-container');
@@ -54,6 +44,7 @@ const createPokemon = async (pokemon) => {
   reservationsBtn.setAttribute('id', `${pokemon.id.toString().padStart(1, 0)}`);
   reservationsBtn.setAttribute('onclick', 'cardpopup(id)');
 
+  // Like Button Handle
   const likes = await fetchLikes(pokemon.id);
 
   const likeBtn = document.createElement('i');
@@ -65,7 +56,7 @@ const createPokemon = async (pokemon) => {
   likeBtn.appendChild(likeCount);
 
   likeBtn.addEventListener('click', async () => {
-    // Like count
+  // Like count
     likeCount.textContent = parseInt(likeCount.textContent, 10) + 1;
     // Involvement API
     await postLike(pokemon.id);
