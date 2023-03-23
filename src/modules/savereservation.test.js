@@ -15,6 +15,6 @@ const calculatereservations = () => {
   return counter;
 };
 
-test ( 'Calculator should return array length', () => {
+test('Calculator should return array length', () => {
   expect(calculatereservations()).toBe(3);
 });
