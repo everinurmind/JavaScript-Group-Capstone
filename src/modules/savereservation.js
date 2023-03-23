@@ -1,11 +1,28 @@
+const displayreservation = async (inputname, inputdatestart, inputdateend, id, reservationslist) => {
+
+    const result = await fetch( 
+        `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/LwQHc3Vs1lC9z58aI8eY/reservations?item_id=${id}`,
+    );
+
+    const reservationsdata = await result.json();
+    console.log(reservationsdata);
+
+    reservationsdata.forEach((reservation) => {
+      const tableitem = document.createElement('tr');
+      tableitem.classList.add('tableitem')
+      tableitem.innerHTML = `${reservation.date_start}` + '  ' + `${reservation.date_end}` + ' by ' + `${reservation.username}`;
+      reservationslist.appendChild(tableitem);
+    });
+}
+
 const addreservation = async (inputname, inputdatestart, inputdateend, id) => {
     await fetch(
-        'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ipgqEHaKcpkeW71IX5YM/reservations', {
+        'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/LwQHc3Vs1lC9z58aI8eY/reservations/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ 'item_id': id, 'username': inputname.value, 'date_start': inputdatestart.value, 'end': inputdateend.value,}),
+          body: JSON.stringify({ item_id: id, username: inputname.value, date_start: inputdatestart.value, date_end: inputdateend.value,}),
         },
       );
       inputname.value = '';
@@ -13,4 +30,4 @@ const addreservation = async (inputname, inputdatestart, inputdateend, id) => {
       inputdateend.value = '';
 }
 
-export default addreservation;
+export { displayreservation, addreservation } ;

@@ -82,4 +82,4 @@ const fetchPokemons = async (number) => {
   await Promise.all(pokemonData.map((pokemon) => createPokemon(pokemon)));
 };
 
-fetchPokemons(45);
+fetchPokemons(12);

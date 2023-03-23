@@ -1,4 +1,4 @@
-import addreservation from './savereservation';
+import { displayreservation, addreservation } from './savereservation';
 
 const cardpopup = (pokemon) => {
       const popup = document.createElement('modal');
@@ -49,7 +49,7 @@ const cardpopup = (pokemon) => {
       reservationstitle.textContent = 'Reservations';
       reservationstitle.classList.add('reservationstitle');
 
-      const reservationslist = document.createElement('ul');
+      const reservationslist = document.createElement('table');
       reservationslist.classList.add('reservationslist');
       reservations.append(reservationstitle, reservationslist);
 
@@ -93,18 +93,20 @@ const cardpopup = (pokemon) => {
       reservebutton.setAttribute('id','reservebutton');
       reservebutton.innerHTML = `Reserve`;
 
-      reservebutton.addEventListener('click', () => {
-        if ((inputname.value && inputdatestart.value && inputdateend.value) !== '') {
-        addreservation(inputname, inputdatestart, inputdateend, pokemon.id)
-        };
-      })
-
       inputreservation.append(namereservation, datereservationstart, datereservationend, reservebutton);
       addareservation.append(addareservationtitle, inputreservation);
 
       maincontainer.append(closecontainer , closeandimage, pokemoname, characteristics, reservations, addareservation);
       popup.append(maincontainer);
       document.querySelector('body').appendChild(popup);
+
+      displayreservation(inputname, inputdatestart, inputdateend, pokemon.id, reservationslist);
+
+      reservebutton.addEventListener('click', () => {
+        if ((inputname.value && inputdatestart.value && inputdateend.value) !== '') {
+        addreservation(inputname, inputdatestart, inputdateend, pokemon.id, reservationslist);
+        };
+      })
 
       closeButton.addEventListener('click', () => {
         popup.classList.remove('openpopup');
