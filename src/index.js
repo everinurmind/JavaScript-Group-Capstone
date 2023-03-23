@@ -64,9 +64,9 @@ const createPokemon = async (pokemon) => {
 
   card.appendChild(spriteContainer);
   card.appendChild(name);
+  card.appendChild(likeBtn);
   card.appendChild(commentsBtn);
   card.appendChild(reservationsBtn);
-  card.appendChild(likeBtn);
   // card.appendChild(number);
 
   pokemonContainer.appendChild(card);

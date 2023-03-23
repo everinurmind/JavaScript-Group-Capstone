@@ -80,6 +80,7 @@ body {
   border: 5px solid #003a70;
   border-radius: 8px;
   box-sizing: border-box;
+  gap: 10px;
 }
 
 .img-container {
@@ -87,11 +88,13 @@ body {
   justify-content: center;
   align-items: center;
   height: 75px;
+  margin-bottom: -10px;
 }
 
 .name,
 .pokemontitle {
   text-align: center;
+  margin-right: 33.33%;
   text-transform: uppercase;
   font-weight: 900;
   color: #003a70;
@@ -107,9 +110,9 @@ body {
 }
 
 .like-btn {
+  margin: -45px 15px 15px calc(75% - 25px);
   font-weight: 900;
   color: #3d7dca;
-  margin: 15px;
   cursor: pointer;
 }
 
