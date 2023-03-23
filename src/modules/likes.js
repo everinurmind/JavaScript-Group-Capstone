@@ -6,7 +6,7 @@ export const fetchLikes = async (id) => {
     const data = await response.json();
     return data.likes || [0];
   } catch (error) {
-    return [];
+    return [0];
   }
 };
 
@@ -16,6 +16,21 @@ export const postLike = async (id) => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ item_id: id }),
+    });
+  } catch (error) {
+    // Do nothing
+  }
+};
+
+export const calculateLikes = async () => {
+  const likeBtns = document.querySelectorAll('.like-btn');
+  const ids = Array.from(likeBtns, (btn) => btn.parentElement.getAttribute('id'));
+  try {
+    const responses = await Promise.all(ids.map(fetchLikes));
+    const likeCounts = responses.map((response) => response[0]);
+    likeBtns.forEach((btn, i) => {
+      const [likeCount] = btn.querySelectorAll('.like-num');
+      likeCount.textContent = likeCounts[i];
     });
   } catch (error) {
     // Do nothing
