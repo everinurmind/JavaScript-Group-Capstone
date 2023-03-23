@@ -5,7 +5,6 @@ const displayreservation = async (inputname, inputdatestart, inputdateend, id, r
     );
 
     const reservationsdata = await result.json();
-    console.log(reservationsdata);
 
     reservationsdata.forEach((reservation) => {
       const tableitem = document.createElement('tr');

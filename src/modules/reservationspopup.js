@@ -1,20 +1,20 @@
-import { displayreservation, addreservation } from './savereservation';
+import { displayreservation, addreservation } from './savereservation.js';
 
 const cardpopup = (pokemon) => {
   const popup = document.createElement('modal');
   popup.style.display = 'block';
   popup.classList.add('openpopup');
   const maincontainer = document.createElement('div');
-  maincontainer.classList.add('maincontainer')
-    
+  maincontainer.classList.add('maincontainer');
+
   const closecontainer = document.createElement('div');
   closecontainer.classList.add('closecontainer');
   const closeButton = document.createElement('span');
-  closeButton.innerHTML = `&times;`
+  closeButton.innerHTML = '&times;';
   closeButton.classList.add('closingbutton');
   const titlebutton = document.createElement('p');
   titlebutton.innerHTML = '<h2 class="t-headline">Reservations <span class="t-span">  Window</span></h2>';
-  closecontainer.append(titlebutton, closeButton)
+  closecontainer.append(titlebutton, closeButton);
 
   const closeandimage = document.createElement('div');
   closeandimage.classList.add('closeandimage');
@@ -96,7 +96,8 @@ const cardpopup = (pokemon) => {
   inputreserv.append(namereservation, datereservationstart, datereservationend, reservebutton);
   addareservation.append(addareservationtitle, inputreserv);
 
-  maincontainer.append(closecontainer, closeandimage, pokemoname, characteristics, reservations, addareservation);
+  maincontainer.append(closecontainer, closeandimage, pokemoname, characteristics,
+  reservations, addareservation);
   popup.append(maincontainer);
   document.querySelector('body').appendChild(popup);
 
