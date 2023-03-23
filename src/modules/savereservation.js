@@ -11,7 +11,16 @@ const displayreserv = async (inputname, inputdatestart, inputdateend, id, reserv
     tableitem.innerHTML = `${reservation.date_start} - ${reservation.date_end} by ${reservation.username}`;
     reservationslist.appendChild(tableitem);
   });
+  calculatereservations();
 };
+
+const calculatereservations = () => {
+    const table = document.querySelectorAll('.tableitem');
+    const counter = table.length;
+    const reservationstitle = document.querySelector('.reservationstitle');
+    reservationstitle.innerHTML=`Reservations (${counter})`;
+    console.log(reservationstitle)
+}
 
 const addreservation = async (inputname, inputdatestart, inputdateend, id) => {
   await fetch(
@@ -31,6 +40,7 @@ const addreservation = async (inputname, inputdatestart, inputdateend, id) => {
   inputname.value = '';
   inputdatestart.value = '';
   inputdateend.value = '';
+  calculatereservations();
 };
 
-export { displayreserv, addreservation };
+export { displayreserv, addreservation, calculatereservations };

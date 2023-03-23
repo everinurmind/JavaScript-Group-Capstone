@@ -1,4 +1,4 @@
-import { displayreserv, addreservation } from './savereservation.js';
+import { displayreserv, addreservation, calculatereservations } from './savereservation.js';
 
 const cardpopup = (pokemon) => {
   const popup = document.createElement('modal');
@@ -115,6 +115,7 @@ const cardpopup = (pokemon) => {
 
   closeButton.addEventListener('click', () => {
     popup.classList.remove('openpopup');
+    location.reload();
   });
 };
 
