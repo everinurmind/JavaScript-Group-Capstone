@@ -1,9 +1,9 @@
 const calculatereservations = () => {
-    const table = document.querySelectorAll('.tableitem');
-    const counter = table.length;
-    const reservationstitle = document.querySelector('.reservationstitle');
-    reservationstitle.innerHTML = `Reservations (${counter})`;
-    };
+  const table = document.querySelectorAll('.tableitem');
+  const counter = table.length;
+  const reservationstitle = document.querySelector('.reservationstitle');
+  reservationstitle.innerHTML = `Reservations (${counter})`;
+};
 
 const displayreserv = async (inputname, inputdatestart, inputdateend, id, reservationslist) => {
   const result = await fetch(
