@@ -1,38 +1,27 @@
-const BASE_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi';
+export const BASE_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi';
+export const APP_ID = 'LwQHc3Vs1lC9z58aI8eY';
 
 export const fetchLikes = async (id) => {
-  try {
-    const response = await fetch(`${BASE_URL}/apps/LwQHc3Vs1lC9z58aI8eY/likes/${id}`);
-    const data = await response.json();
-    return data.likes || [0];
-  } catch (error) {
-    return [0];
-  }
+  const response = await fetch(`${BASE_URL}/apps/${APP_ID}/likes`);
+  const data = await response.json();
+  const likes = data.find((item) => item.item_id === id)?.likes || 0;
+  return likes;
 };
 
-export const postLike = async (id) => {
-  try {
-    await fetch(`${BASE_URL}/apps/LwQHc3Vs1lC9z58aI8eY/likes/${id}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ item_id: id }),
-    });
-  } catch (error) {
-    // Do nothing
-  }
+export const postLike = async (id, count) => {
+  await fetch(`${BASE_URL}/apps/${APP_ID}/likes`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ item_id: id, likes: count }),
+  });
 };
 
 export const calculateLikes = async () => {
-  const likeBtns = document.querySelectorAll('.like-btn');
-  const ids = Array.from(likeBtns, (btn) => btn.parentElement.getAttribute('id'));
-  try {
-    const responses = await Promise.all(ids.map(fetchLikes));
-    const likeCounts = responses.map((response) => response[0]);
-    likeBtns.forEach((btn, i) => {
-      const [likeCount] = btn.querySelectorAll('.like-num');
-      likeCount.textContent = likeCounts[i];
-    });
-  } catch (error) {
-    // Do nothing
-  }
+  const likeButtons = document.querySelectorAll('.like-btn');
+  const itemIds = Array.from(likeButtons, (btn) => btn.parentElement.getAttribute('id'));
+  const likeCounts = await Promise.all(itemIds.map((id) => fetchLikes(id)));
+  likeCounts.forEach((likes, i) => {
+    const likeCountElem = likeButtons[i].querySelector('.like-num');
+    likeCountElem.textContent = likes;
+  });
 };
