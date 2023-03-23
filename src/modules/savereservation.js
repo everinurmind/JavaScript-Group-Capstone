@@ -1,5 +1,4 @@
-const displayreserv = async (inputname, inputdatestart, inputdateend, id, reservationslist)=> {
-
+const displayreserv = async (inputname, inputdatestart, inputdateend, id, reservationslist) => {
   const result = await fetch(
     `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/LwQHc3Vs1lC9z58aI8eY/reservations?item_id=${id}`,
   );
@@ -22,7 +21,9 @@ const addreservation = async (inputname, inputdatestart, inputdateend, id) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        item_id: id, username: inputname.value, date_start: inputdatestart.value,
+        item_id: id,
+        username: inputname.value,
+        date_start: inputdatestart.value,
         date_end: inputdateend.value,
       }),
     },
