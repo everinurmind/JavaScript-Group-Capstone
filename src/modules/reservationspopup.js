@@ -1,4 +1,4 @@
-import { displayreservation, addreservation } from './savereservation.js';
+import { displayreserv, addreservation } from './savereservation.js';
 
 const cardpopup = (pokemon) => {
   const popup = document.createElement('modal');
@@ -97,11 +97,11 @@ const cardpopup = (pokemon) => {
   addareservation.append(addareservationtitle, inputreserv);
 
   maincontainer.append(closecontainer, closeandimage, pokemoname, characteristics,
-  reservations, addareservation);
+    reservations, addareservation);
   popup.append(maincontainer);
   document.querySelector('body').appendChild(popup);
 
-  displayreservation(inputname, inputdatestart, inputdateend, pokemon.id, reservationslist);
+  displayreserv(inputname, inputdatestart, inputdateend, pokemon.id, reservationslist);
 
   reservebutton.addEventListener('click', () => {
     if ((inputname.value && inputdatestart.value && inputdateend.value) !== '') {
