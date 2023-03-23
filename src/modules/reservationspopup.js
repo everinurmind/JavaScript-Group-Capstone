@@ -105,6 +105,10 @@ const cardpopup = (pokemon) => {
       reservebutton.addEventListener('click', () => {
         if ((inputname.value && inputdatestart.value && inputdateend.value) !== '') {
         addreservation(inputname, inputdatestart, inputdateend, pokemon.id, reservationslist);
+        const tableitem = document.createElement('tr');
+        tableitem.classList.add('tableitem')
+        tableitem.innerHTML = inputdatestart.value + ' - ' + inputdateend.value + ' by ' + inputname.value;
+        reservationslist.appendChild(tableitem);
         };
       })
 

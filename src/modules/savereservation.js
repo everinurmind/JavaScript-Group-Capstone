@@ -10,7 +10,7 @@ const displayreservation = async (inputname, inputdatestart, inputdateend, id, r
     reservationsdata.forEach((reservation) => {
       const tableitem = document.createElement('tr');
       tableitem.classList.add('tableitem')
-      tableitem.innerHTML = `${reservation.date_start}` + '  ' + `${reservation.date_end}` + ' by ' + `${reservation.username}`;
+      tableitem.innerHTML = `${reservation.date_start}` + ' - ' + `${reservation.date_end}` + ' by ' + `${reservation.username}`;
       reservationslist.appendChild(tableitem);
     });
 }
