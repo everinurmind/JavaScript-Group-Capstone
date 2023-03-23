@@ -44,7 +44,7 @@ const createPokemon = async (pokemon) => {
   reservationsBtn.setAttribute('id', `${pokemon.id.toString().padStart(1, 0)}`);
   reservationsBtn.addEventListener('click', () => {
     cardpopup(pokemon);
-  })
+  });
 
   // Like Button Handle
   const likes = await fetchLikes(pokemon.id);
