@@ -2,7 +2,6 @@
 import './style.css';
 import logo from './img/pokeball.png';
 import { handleScroll, handleScrollTop } from './modules/scroll.js';
-// import cardpopup from './modules/reservationspopup.js';
 import { fetchLikes, postLike, calculateLikes } from './modules/likes.js';
 
 const img = document.createElement('img');
@@ -41,14 +40,13 @@ const createPokemon = async (pokemon) => {
   const reservationsBtn = document.createElement('button');
   reservationsBtn.textContent = 'Reservations';
   reservationsBtn.classList.add('reservations-btn');
-  reservationsBtn.setAttribute('id', `${pokemon.id.toString().padStart(1, 0)}`);
-  reservationsBtn.setAttribute('onclick', 'cardpopup(id)');
 
   // Like Button Handle
   const likes = await fetchLikes(pokemon.id);
 
   const likeBtn = document.createElement('i');
   likeBtn.classList.add('fas', 'fa-heart', 'like-btn');
+  likeBtn.setAttribute('data-id', pokemon.id);
 
   const likeCount = document.createElement('span');
   likeCount.classList.add('like-num');
