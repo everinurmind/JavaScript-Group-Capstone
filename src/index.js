@@ -4,7 +4,6 @@ import logo from './img/pokeball.png';
 import { handleScroll, handleScrollTop } from './modules/scroll.js';
 import cardpopup from './modules/reservationspopup.js';
 import { fetchLikes, postLike } from './modules/likes.js';
-import { calculatereservations } from './modules/savereservation.js'
 
 const img = document.createElement('img');
 img.src = logo;

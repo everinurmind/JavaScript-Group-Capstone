@@ -1,3 +1,10 @@
+const calculatereservations = () => {
+    const table = document.querySelectorAll('.tableitem');
+    const counter = table.length;
+    const reservationstitle = document.querySelector('.reservationstitle');
+    reservationstitle.innerHTML = `Reservations (${counter})`;
+    };
+
 const displayreserv = async (inputname, inputdatestart, inputdateend, id, reservationslist) => {
   const result = await fetch(
     `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/LwQHc3Vs1lC9z58aI8eY/reservations?item_id=${id}`,
@@ -13,14 +20,6 @@ const displayreserv = async (inputname, inputdatestart, inputdateend, id, reserv
   });
   calculatereservations();
 };
-
-const calculatereservations = () => {
-    const table = document.querySelectorAll('.tableitem');
-    const counter = table.length;
-    const reservationstitle = document.querySelector('.reservationstitle');
-    reservationstitle.innerHTML=`Reservations (${counter})`;
-    console.log(reservationstitle)
-}
 
 const addreservation = async (inputname, inputdatestart, inputdateend, id) => {
   await fetch(
