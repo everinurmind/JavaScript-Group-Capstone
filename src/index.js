@@ -70,7 +70,6 @@ const createPokemon = async (pokemon) => {
   card.appendChild(likeBtn);
   card.appendChild(commentsBtn);
   card.appendChild(reservationsBtn);
-  card.appendChild(likeBtn);
 
   pokemonContainer.appendChild(card);
 };
@@ -83,5 +82,5 @@ const fetchPokemons = async (number) => {
   await Promise.all(pokemonData.map((pokemon) => createPokemon(pokemon)));
 };
 
-fetchPokemons(18);
+fetchPokemons(45);
 calculateLikes();
