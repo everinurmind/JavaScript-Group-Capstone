@@ -32,17 +32,19 @@ Hello! This is our first JavaScript Capstone group project. Here you can see all
 ![CSS3](https://icongr.am/devicon/css3-original.svg?size=50&color=currentColor)
 ![JavaScript](https://icongr.am/devicon/javascript-original.svg?size=50&color=currentColor)
 
-### Tech Stack <a name="#tech-stack"></a>
+### Tech Stack <a name="#tech-stack">HTML, CSS, Javascript, APIs</a>
 
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+    <li><a href="#">HTML</a></li>
+    <li><a href="#">CSS</a></li>
+    <li><a href="#">Javascript</a></li>
   </ul>
 </details>
 
 <details>
-  <summary>API Server</summary>
+  <summary>Pokemon API Server</summary>
   <ul>
     <li><a href="https://pokeapi.co/">PokeAPI</a></li>
   </ul>
