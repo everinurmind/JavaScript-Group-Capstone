@@ -38,7 +38,7 @@ const createPokemon = async (pokemon) => {
   const commentsBtn = document.createElement('button');
   commentsBtn.textContent = 'Comments';
   commentsBtn.classList.add('comments-btn');
-  
+
   commentsBtn.addEventListener('click', () => {
     ShowComments.commentPopup(pokemon);
   });
