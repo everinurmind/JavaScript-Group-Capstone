@@ -2,7 +2,6 @@ import { displayreserv, addreservation } from './savereservation.js';
 
 const cardpopup = (pokemon) => {
   const popup = document.createElement('modal');
-  popup.style.display = 'block';
   popup.classList.add('openpopup');
   const maincontainer = document.createElement('div');
   maincontainer.classList.add('maincontainer');

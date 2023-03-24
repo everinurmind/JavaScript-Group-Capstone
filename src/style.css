@@ -357,13 +357,13 @@ footer {
 /* Reservations popup */
 
 .openpopup {
+  position: fixed;
   height: 100%;
   width: 100%;
-  position: fixed;
   top: 0;
   left: 0;
   z-index: 1;
-  overflow: auto;
+  overflow: scroll;
   padding: 16px;
   opacity: 1;
   background-color: #1f69c3f1;
