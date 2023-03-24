@@ -89,7 +89,16 @@ const modal = async (pokemon) => {
   submitComment.innerHTML = 'Comment';
   submitComment.addEventListener('click', () => {
     if ((playName.value && commentTextarea.value) !== '') {
-      CommentData.addComment(pokemon.id, playName.value, commentTextarea.value, commentArea);
+      CommentData.addComment(pokemon.id, playName.value, commentTextarea.value);
+      const nowDate = new Date();
+      const date = `${nowDate.getFullYear()}-${nowDate.getMonth() + 1}-${nowDate.getDate()}`;
+      const commentTextBox = document.createElement('div');
+      commentTextBox.classList.add('comment');
+      const commentText = document.createElement('span');
+      commentText.classList.add('player');
+      commentText.innerHTML = `${date} { ${playName.value} } ${commentTextarea.value}`;
+      commentTextBox.appendChild(commentText);
+      commentArea.appendChild(commentTextBox);
       playName.value = '';
       commentTextarea.value = '';
     }

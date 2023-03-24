@@ -15,7 +15,7 @@ class CommentData {
     }
     // ─── Add Comment ─────────────────────────────────────────────────────────────
 
-    static addComment = async (pokemonId, name, comments, commentArea) => {
+    static addComment = async (pokemonId, name, comments) => {
       const res = await fetch(`${getUrl}/`, {
         method: 'POST',
         headers: {
@@ -28,7 +28,6 @@ class CommentData {
         }),
       });
       this.commentCounter(pokemonId);
-      this.loadComments(pokemonId, commentArea);
       return res;
     }
 
