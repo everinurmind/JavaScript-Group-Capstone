@@ -247,8 +247,25 @@ footer {
   text-align: center;
 }
 
-.inputreservation {
+.inputreserv {
   list-style-type: none;
+}
+
+.inputreserv li {
+  margin-bottom: 0.5rem;
+}
+
+.reservationslist {
+  width: 20rem;
+}
+
+.reservationstitle {
+  text-align: center;
+}
+
+.tableitem {
+  color: #fff;
+  margin-bottom: 1rem;
 }
 
 .inputreservation li {
