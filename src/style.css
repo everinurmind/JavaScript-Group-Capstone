@@ -208,6 +208,7 @@ body {
 .t-headline {
   color: #ffcb05;
   font-weight: 700;
+  font-size: 1.3rem;
 }
 
 .t-span {
@@ -294,7 +295,6 @@ body {
   border: 2px solid #fff;
   border-radius: 20px;
 }
-
 
 /* Comment Posting */
 
@@ -401,11 +401,6 @@ footer {
   float: right;
   font-size: 30px;
   font-weight: bold;
-}
-
-.t-headline {
-  color: #ffcb05;
-  font-size: 1.3rem;
 }
 
 .pokemonimage {
