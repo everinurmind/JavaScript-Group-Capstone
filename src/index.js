@@ -4,6 +4,7 @@ import logo from './img/pokeball.png';
 import { handleScroll, handleScrollTop } from './modules/scroll.js';
 import cardpopup from './modules/reservationspopup.js';
 import { fetchLikes, postLike, calculateLikes } from './modules/likes.js';
+import ShowComments from './modules/commentPopup.js';
 
 const img = document.createElement('img');
 img.src = logo;
@@ -37,6 +38,10 @@ const createPokemon = async (pokemon) => {
   const commentsBtn = document.createElement('button');
   commentsBtn.textContent = 'Comments';
   commentsBtn.classList.add('comments-btn');
+  
+  commentsBtn.addEventListener('click', () => {
+    ShowComments.commentPopup(pokemon);
+  });
 
   const reservationsBtn = document.createElement('button');
   reservationsBtn.textContent = 'Reservations';
@@ -84,3 +89,4 @@ const fetchPokemons = async (number) => {
 
 fetchPokemons(45);
 calculateLikes();
+export default { createPokemon };
