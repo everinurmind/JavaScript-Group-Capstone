@@ -2,6 +2,7 @@
 import './style.css';
 import logo from './img/pokeball.png';
 import { handleScroll, handleScrollTop } from './modules/scroll.js';
+import cardpopup from './modules/reservationspopup.js';
 import { fetchLikes, postLike, calculateLikes } from './modules/likes.js';
 
 const img = document.createElement('img');
@@ -40,6 +41,10 @@ const createPokemon = async (pokemon) => {
   const reservationsBtn = document.createElement('button');
   reservationsBtn.textContent = 'Reservations';
   reservationsBtn.classList.add('reservations-btn');
+  reservationsBtn.setAttribute('id', `${pokemon.id.toString().padStart(1, 0)}`);
+  reservationsBtn.addEventListener('click', () => {
+    cardpopup(pokemon);
+  });
 
   // Like Button Handle
   const likes = await fetchLikes(pokemon.id);
@@ -65,7 +70,7 @@ const createPokemon = async (pokemon) => {
   card.appendChild(likeBtn);
   card.appendChild(commentsBtn);
   card.appendChild(reservationsBtn);
-  // card.appendChild(number);
+  card.appendChild(likeBtn);
 
   pokemonContainer.appendChild(card);
 };
@@ -78,5 +83,5 @@ const fetchPokemons = async (number) => {
   await Promise.all(pokemonData.map((pokemon) => createPokemon(pokemon)));
 };
 
-fetchPokemons(45);
+fetchPokemons(18);
 calculateLikes();
