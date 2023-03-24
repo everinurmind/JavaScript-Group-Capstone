@@ -8,7 +8,6 @@ body {
   background-color: #3d7dca;
 }
 
-
 /* Header Section */
 
 .navbar {
@@ -42,7 +41,6 @@ body {
   color: #3d7dca;
 }
 
-
 /* Scroll Button */
 
 #scroll-to-top-btn {
@@ -66,7 +64,6 @@ body {
 #scroll-to-top-btn:hover {
   background-color: #3d7dca;
 }
-
 
 /* Pokemon Cards Section */
 
@@ -147,7 +144,6 @@ body {
   background-color: #003a70;
 }
 
-
 /* Comment Modal */
 
 .modal {
@@ -164,7 +160,6 @@ body {
   background-color: rgba(0, 0, 0, 0.787);
 }
 
-
 /* Modal Content */
 
 .modal-content {
@@ -174,7 +169,6 @@ body {
   width: 90%;
   border: 2px solid #003a70;
 }
-
 
 /* The Close Button */
 
@@ -191,7 +185,6 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
-
 
 /* Comment Container */
 
@@ -212,7 +205,6 @@ body {
 .t-span {
   color: #0a0a0a;
 }
-
 
 /* comment image container */
 
@@ -241,7 +233,6 @@ body {
   width: 50%;
 }
 
-
 /* Comment Info Container */
 
 .infoContainer {
@@ -266,7 +257,6 @@ body {
   color: #003a70;
   font-weight: 600;
 }
-
 
 /* Comment Section and Area */
 
@@ -342,7 +332,6 @@ body {
   box-shadow: 4px 3px;
   font-weight: 900;
 }
-
 
 /* Footer Section */
 
