@@ -1,7 +1,5 @@
 const path = require('path');
-/* eslint-disable */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-/* eslint-enable */
 
 module.exports = {
   mode: 'development',
@@ -16,8 +14,9 @@ module.exports = {
     }),
   ],
   output: {
-    filename: '[name].js',
+    filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
+    clean: true,
   },
   module: {
     rules: [
@@ -25,10 +24,13 @@ module.exports = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        type: 'asset',
+        generator: {
+          filename: 'img/[name][ext]',
+        },
+      },
     ],
   },
-  optimization: {
-    runtimeChunk: 'single',
-  },
-
 };
