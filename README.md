@@ -107,7 +107,7 @@ npm test
 👤 **Cosmos Hagan**
 
 - GitHub: [@Cosmosha](https://github.com/Cosmosha)
-- LinkedIn: [LinkedIn](https://gh.linkedin.com/in/cosmos-hagan-1361871ba)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/cosmos-hagan-1361871ba)
 
 ### 🔭 Features <a name="future-features"></a>
 
