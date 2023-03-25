@@ -18,7 +18,7 @@
 - [🙏 Acknowledgements](#acknowledgements)
 - [📝 License](#license)
 
-# 📖 To-Do List <a name="#about-project"></a>
+# 📖 JavaScript Capstone Group Project <a name="#about-project"></a>
 
 Hello! This is our first JavaScript Capstone group project. Here you can see all the features, that have been implemented in our page.
 
