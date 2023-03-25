@@ -66,7 +66,7 @@ To get a local copy up and running, follow these steps.
 ### Prerequisites
 ```
 Git
-VS Code
+VSCode
 Node
 ```
 
